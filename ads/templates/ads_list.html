@@ -1,0 +1,11 @@
+<ul>
+    {% for ad in ads %}
+        <li>
+            <strong>{{ ad.title }}</strong> - {{ ad.price }} zł<br>
+            Kategoria: {{ ad.category.name if ad.category else "Brak" }}<br>
+            {{ ad.description }}
+        </li>
+    {% empty %}
+        <li>Brak ogłoszeń.</li>
+    {% endfor %}
+</ul>

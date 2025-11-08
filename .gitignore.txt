@@ -1,0 +1,18 @@
+# Wirtualne środowisko
+venv/
+
+# Pliki systemowe
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Pliki tymczasowe VSCode / PyCharm
+.vscode/
+.idea/
+
+# Migracje (opcjonalnie, jeśli chcesz je pominąć)
+# */migrations/
+
+# Pliki środowiskowe
+.env
