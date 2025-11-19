@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import ads_htmx
+from . import views_html
 
 urlpatterns = [
-    path('', ads_htmx, name='ads-htmx'),
+    path('form/', views_html.ad_form, name='ad_form'),
 ]

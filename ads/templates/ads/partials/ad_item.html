@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<li>
+    <strong>{{ ad.title }}</strong> - {{ ad.price }} zł<br>
+    Kategoria: {{ ad.category.name|default:"Brak" }}<br>
+    {{ ad.description }}
+</li>
+{% endblock %}
+
+

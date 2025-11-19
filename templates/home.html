@@ -1,20 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>LocalMarket</title>
-    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <title>LocalMarket - Strona główna</title>
 </head>
 <body>
-    <h1>LocalMarket - Ogłoszenia</h1>
-
-    <!-- Kontener z ogłoszeniami -->
-    <div id="ads-list"
-         hx-get="/htmx/"
-         hx-trigger="load"
-         hx-target="#ads-list"
-         hx-swap="innerHTML">
-        Ładowanie ogłoszeń...
-    </div>
+    <h1>Witaj w LocalMarket!</h1>
+    <p>Przejdź do: <a href="/ads/">lista ogłoszeń</a></p>
 </body>
 </html>

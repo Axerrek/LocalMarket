@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<form 
+    hx-post="{% url 'ad_form' %}" 
+    hx-target="#ads-list"
+    hx-swap="beforeend"
+    hx-on="htmx:afterSwap: document.getElementById('modal').innerHTML=''"
+>
+    {% csrf_token %}
+    <label>Tytuł:</label>
+    <input type="text" name="title" required><br>
+
+    <label>Opis:</label>
+    <textarea name="description" required></textarea><br>
+
+    <label>Cena:</label>
+    <input type="number" name="price" required><br>
+
+    <label>Kategoria:</label>
+    <select name="category">
+        <option value="">Brak</option>
+        {% for cat in categories %}
+            <option value="{{ cat.id }}">{{ cat.name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <button type="submit">Potwierdź</button>
+</form>
+
+{% endblock %}
+
+
+
