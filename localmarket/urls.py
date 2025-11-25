@@ -3,8 +3,8 @@ from django.urls import path, include
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-
-
+from django.conf import settings
+from django.conf.urls.static import static
 def home(request):
     return render(request, 'home.html')
 
@@ -22,3 +22,5 @@ urlpatterns = [
     path('api/', include('ads.urls')),           # REST API
     path('api/test/', test_api),                 # Testowy endpoint JSON
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

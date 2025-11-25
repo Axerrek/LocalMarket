@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <form 
-    hx-post="{% url 'ad_form' %}" 
+    hx-post="{% url 'ad_create' %}" 
     hx-target="#ads-list"
     hx-swap="beforeend"
-    hx-on="htmx:afterSwap: document.getElementById('modal').innerHTML=''"
+    enctype="multipart/form-data"
 >
     {% csrf_token %}
     <label>Tytuł:</label>
@@ -22,9 +22,12 @@
         {% for cat in categories %}
             <option value="{{ cat.id }}">{{ cat.name }}</option>
         {% endfor %}
-    </select><br><br>
+    </select><br>
 
-    <button type="submit">Potwierdź</button>
+    <label>Zdjęcie:</label>
+    <input type="file" name="image"><br><br>
+
+    <button type="submit">Dodaj ogłoszenie</button>
 </form>
 
 {% endblock %}

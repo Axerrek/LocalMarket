@@ -1,17 +1,15 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    margin: 0;
+    background: #b1b1b1;
+    text-align: center;
+    margin: auto;
     padding: 0;
 }
 
 .container {
     width: 800px;
     margin: 40px auto;
-    background: white;
     padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 button {
@@ -28,3 +26,117 @@ button:hover {
 }
 .modal { display: none; }          /* ale tylko na formularz, nie na div#modal */
 .modal.show { display: block; }  
+
+
+/* HEADER */
+header {
+    background-color: #26702e;
+}
+
+/* Układ wewnętrzny */
+header .container {
+    width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* logo po lewej, nav po prawej */
+}
+
+/* LOGO */
+header .logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+/* NAVIGATION LINKS */
+header nav {
+    display: flex;
+    gap: 16px;   /* odstęp między linkami */
+}
+header nav a:link,
+header nav a:visited,
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+header nav a:hover {
+    color: #e0e0e0;  /* jasny szary */
+}
+
+
+.login-box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
+    margin-top: 50px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #999;
+}
+#items-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;           /* aby karty układały się w rzędy */
+    justify-content: center;   /* wyśrodkowanie całej listy */
+    gap: 10px;                 /* odstępy między kartami */
+}
+
+.item-card {
+    display: flex;
+    width: 70%;              /* ograniczamy szerokość */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.item-image img.item-img {
+    display: block;       /* zawsze pokazuj obrazek */
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.item-content {
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.item-price {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.item-description {
+    margin-top: 10px;
+    font-size: 14px;
+}

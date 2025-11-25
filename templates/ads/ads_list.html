@@ -1,21 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-
-<button 
-    hx-get="{% url 'ad_form' %}" 
-    hx-target="#modal"
-    hx-swap="innerHTML"
->
-    Dodaj ogłoszenie
-</button>
-
 <div id="modal"></div>
-<ul id="ads-list">
+<ul id="items-list">
     {% for ad in ads %}
         {% include "ads/partials/ad_item.html" %}
     {% empty %}
         <li>Brak ogłoszeń.</li>
     {% endfor %}
 </ul>
-
 {% endblock %}

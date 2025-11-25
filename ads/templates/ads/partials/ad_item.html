@@ -1,10 +1,20 @@
-{% extends "base.html" %}
-{% block content %}
-<li>
-    <strong>{{ ad.title }}</strong> - {{ ad.price }} zł<br>
-    Kategoria: {{ ad.category.name|default:"Brak" }}<br>
-    {{ ad.description }}
+{% load static %}
+<li class="item-card">
+
+    <div class="item-image">
+        {% if ad.image %}
+            <img src="{{ ad.image.url }}" alt="{{ ad.title }}" class="item-img">
+        {% else %}
+            <img src="{% static 'placeholder.png' %}" alt="Brak zdjęcia" class="item-img">
+        {% endif %}
+    </div>
+
+    <div class="item-content">
+        <div class="item-header">
+            <h2 class="item-title">{{ ad.title }}</h2>
+            <span class="item-price">{{ ad.price }} zł</span>
+        </div>
+        <p class="item-description">{{ ad.description }}</p>
+    </div>
+
 </li>
-{% endblock %}
-
-
