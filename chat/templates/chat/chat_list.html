@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="chat-container">
+    <aside class="chat-list">
+        <h3>Twoje rozmowy</h3>
+
+        {% for thread, other in threads_with_other %}
+        <a href="{% url 'chat_detail' thread.id %}" class="chat-item">
+        <div class="avatar"></div>
+        <div class="chat-name">{{ other.username }}</div>
+        </a>
+        {% empty %}
+            <p>Brak rozmów.</p>
+        {% endfor %}
+    </aside>
+
+    <section class="chat-empty">
+        <h2>Wybierz rozmowę po lewej stronie</h2>
+    </section>
+</div>
+
+{% endblock %}

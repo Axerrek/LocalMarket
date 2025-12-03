@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="chat-container">
+    <aside class="chat-list">
+        {% for t, other in threads_with_other %}
+            <a href="{% url 'chat_detail' t.id %}" class="chat-item {% if t.id == thread.id %}active{% endif %}">
+                <div class="avatar"></div>
+                <div class="chat-name">{{ other.username }}</div>
+            </a>
+        {% endfor %}
+    </aside>
+
+    <section class="chat-window">
+        <div class="chat-header">
+            <h3>{{ other_user.username }}</h3>
+        </div>
+
+        <div class="messages">
+            {% for msg in messages %}
+                <div class="message {% if msg.sender == request.user %}me{% else %}them{% endif %}">
+                    <p>{{ msg.text }}</p>
+                </div>
+            {% empty %}
+                <p>Brak wiadomości w tej rozmowie.</p>
+            {% endfor %}
+        </div>
+
+        <form method="POST" class="message-form">
+            {% csrf_token %}
+            <input name="message" placeholder="Napisz wiadomość..." autocomplete="off">
+            <button type="submit">Wyślij</button>
+        </form>
+    </section>
+</div>
+{% endblock %}

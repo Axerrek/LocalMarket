@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="ad-container">
+    
+    <div class="image">
+        {% if ad.image %}
+            <img src="{{ ad.image.url }}" alt="{{ ad.title }}">
+        {% endif %}
+    </div>
+
+    <div class="details">
+        <h1>{{ ad.title }}</h1>
+
+        <p><strong>Cena:</strong> {{ ad.price }} zł</p>
+
+        <p>{{ ad.description }}</p>
+
+        <a href="{% url 'start_chat' ad.owner.id %}" class="contact-btn">
+        Napisz do sprzedającego
+        </a>
+    </div>
+
+</div>
+{% endblock %}

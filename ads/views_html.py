@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Ad, Category
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import render, get_object_or_404
 
 def ad_form(request):
     categories = Category.objects.all()
@@ -27,6 +27,9 @@ def ad_form(request):
 
     return render(request, "ads/partials/ad_form.html", {"categories": categories})
 
+def ad_detail(request, ad_id):
+    ad = get_object_or_404(Ad, id=ad_id)
+    return render(request, "ads/ad_detail.html", {"ad": ad})
 
 @login_required
 def ad_create_page(request):

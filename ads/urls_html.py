@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/', views_auth.login_page, name='login'),
     path('register/', views_auth.register_page, name='register'),
     path('logout/', views_auth.logout_user, name='logout'),
+    path("<int:ad_id>/", views_html.ad_detail, name="ad_detail"),
 ]

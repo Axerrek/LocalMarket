@@ -8,6 +8,8 @@
 
     <!-- CSS globalny -->
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'ads/ads.css' %}">
+    <link rel="stylesheet" href="{% static 'chat/chat.css' %}">
 
     <!-- HTMX -->
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
@@ -22,6 +24,7 @@
         <a href="{% url 'ads_list' %}">Przeglądaj ogłoszenia</a>
     {% if user.is_authenticated %}
         <a>Witaj, {{ user.username }}!</a>
+        <a href="{% url 'chat_list' %}">Czaty</a>
         <a href="{% url 'logout' %}">Wyloguj</a>
         <a href="{% url 'ad_create' %}">Dodaj ogłoszenie</a>
     {% else %}

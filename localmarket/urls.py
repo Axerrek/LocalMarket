@@ -21,6 +21,8 @@ urlpatterns = [
     path('htmx/', include('ads.urls_htmx')),     # HTMX widoki
     path('api/', include('ads.urls')),           # REST API
     path('api/test/', test_api),                 # Testowy endpoint JSON
+    path('accounts/', include('allauth.urls')),  # Allauth  
+    path('chat/', include('chat.urls')),         # Chat app
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

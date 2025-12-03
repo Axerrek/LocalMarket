@@ -2,19 +2,23 @@
 <li class="item-card">
 
     <div class="item-image">
+        <a href="{% url 'ad_detail' ad.id %}" class="item-link">
         {% if ad.image %}
             <img src="{{ ad.image.url }}" alt="{{ ad.title }}" class="item-img">
         {% else %}
             <img src="{% static 'placeholder.png' %}" alt="Brak zdjęcia" class="item-img">
         {% endif %}
+        </a>
     </div>
 
     <div class="item-content">
+        <a href="{% url 'ad_detail' ad.id %}" class="item-link">
         <div class="item-header">
             <h2 class="item-title">{{ ad.title }}</h2>
             <span class="item-price">{{ ad.price }} zł</span>
         </div>
         <p class="item-description">{{ ad.description }}</p>
+        </a>
     </div>
 
 </li>
