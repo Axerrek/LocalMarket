@@ -28,8 +28,8 @@
         <a href="{% url 'logout' %}">Wyloguj</a>
         <a href="{% url 'ad_create' %}">Dodaj ogłoszenie</a>
     {% else %}
-        <a href="{% url 'login' %}">Zaloguj się</a>
-        <a href="{% url 'register' %}">Zarejestruj się</a>
+        <a href="{% url 'account_login' %}">Zaloguj się</a>
+        <a href="{% url 'account_signup' %}">Zarejestruj się</a>
     {% endif %}
 </nav>
     </div>

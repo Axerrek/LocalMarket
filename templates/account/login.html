@@ -11,7 +11,7 @@
 
     <p>Zaloguj się przez konto google</p>
 
-   <form method="post" action="{% provider_login_url 'google' process='lgoin' %}">
+   <form method="post" action="{% provider_login_url 'google' process='login' %}">
     {% csrf_token %}
     <button type="submit" class="google-btn">
         <img src="{% static 'img/google_icon.png' %}" alt="Google" class="google-icon">
@@ -20,13 +20,18 @@
     </form>
 
     <!-- Tradycyjny formularz logowania -->
-    <p>Lub zaloguj się tradycyjnie:</p>
     <form method="POST" action="{% url 'account_login' %}">
-        {% csrf_token %}
-        <input type="text" name="login" placeholder="Nazwa użytkownika lub email" required>
-        <input type="password" name="password" placeholder="Hasło" required>
-        <button type="submit">Zaloguj</button>
-    </form>
-    <p>Nie masz konta? <a href="{% url 'register' %}">Zarejestruj się</a></p>
+    {% csrf_token %}
+
+    <label for="id_login">Nazwa użytkownika lub email:</label>
+    {{ form.login }}
+
+    <label for="id_password">Hasło:</label>
+    {{ form.password }}
+
+    <button type="submit">Zaloguj</button>
+  </form>
+
+  <p>Nie masz konta? <a href="{% url 'account_signup' %}">Zarejestruj się</a></p>
 </div>
 {% endblock %}

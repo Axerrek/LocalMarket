@@ -70,3 +70,59 @@
     flex-grow: 1;
     padding: 8px;
 }
+
+
+.chat-window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.message {
+    padding: 6px 10px;
+    margin: 4px 0;
+    border-radius: 8px;
+    max-width: 70%;
+}
+
+.message.me {
+    background-color: #26702e;
+    color: white;
+    align-self: flex-end;
+}
+
+.message.them {
+    background-color: #f1f1f1;
+    color: black;
+    align-self: flex-start;
+}
+
+.message-form {
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+.message-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.message-form button {
+    padding: 10px 16px;
+    border: none;
+    background-color: #26702e;
+    color: white;
+    cursor: pointer;
+}

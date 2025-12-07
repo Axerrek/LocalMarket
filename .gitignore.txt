@@ -16,3 +16,11 @@ __pycache__/
 
 # Pliki środowiskowe
 .env
+
+# Media
+media/items_images/
+media/items_images/*
+media/items_images/**/*.jpg
+media/items_images/**/*.jpeg
+media/items_images/**/*.png
+media/items_images/**/*.gif
