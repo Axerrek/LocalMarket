@@ -1,0 +1,8 @@
+from django.apps import AppConfig
+
+class LocalmarketConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'localmarket'
+
+    def ready(self):
+        import localmarket.signals

@@ -12,7 +12,7 @@ def ad_form(request):
         description = request.POST.get("description")
         price = request.POST.get("price")
         category_id = request.POST.get("category")
-        image = request.FILES.get("image")  # <-- NOWOŚĆ
+        image = request.FILES.get("image") 
 
         ad = Ad.objects.create(
             title=title,
@@ -40,7 +40,7 @@ def ad_create_page(request):
         description = request.POST.get("description")
         price = request.POST.get("price")
         category_id = request.POST.get("category")
-        image = request.FILES.get("image")  # <-- NOWOŚĆ
+        image = request.FILES.get("image")
 
         ad = Ad.objects.create(
             title=title,
@@ -48,18 +48,16 @@ def ad_create_page(request):
             price=price,
             owner=request.user,
             category=Category.objects.get(id=category_id) if category_id else None,
-            image=image  # <-- ZAPIS OBRAZU
+            image=image
         )
-
-        return redirect("ads_list")
+        # Zwracamy fragment HTML dla HTMX
+        return render(request, "ads/partials/ad_item.html", {"ad": ad})
 
     return render(request, "ads/ad_create.html", {"categories": categories})
 
-
 def ads_list(request):
-    ads = Ad.objects.all().order_by('-created_at')
-    return render(request, 'ads/ads_list.html', {'ads': ads})
-
+    # HTML i HTMX wywoułują REST API
+    return render(request, 'ads/ads_list.html')
 
 def login_page(request):
     return render(request, "auth/login.html")

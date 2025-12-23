@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: #b1b1b1;
+    background: #1E1F20;
     text-align: center;
     margin: auto;
 }
@@ -55,6 +55,21 @@ header nav {
     display: flex;
     gap: 16px;   /* odstęp między linkami */
 }
+/* Stylizacja przycisku w nav, żeby wyglądał jak link */
+.nav-link-button,
+.nav-link-button:hover{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 12px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-family: inherit;
+}
+
 header nav a:link,
 header nav a:visited,
 header nav a {
@@ -66,7 +81,8 @@ header nav a {
     transition: color 0.2s ease;
 }
 
-header nav a:hover {
+header nav a:hover,
+.nav-link-button:hover {
     color: #e0e0e0;  /* jasny szary */
 }
 
@@ -197,3 +213,29 @@ header nav a:hover {
     transition: 0.15s;
 }
 
+.messages {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.message.info {
+    background: #cce5ff;
+    color: #004085;
+}

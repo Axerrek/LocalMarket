@@ -1,0 +1,7 @@
+<ul id="items-list">
+    {% for ad in ads %}
+        {% include "ads/partials/ad_item.html" %}
+    {% empty %}
+        <li>Brak ogłoszeń.</li>
+    {% endfor %}
+</ul>

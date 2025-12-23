@@ -1,28 +1,28 @@
 from django.shortcuts import render
 from .models import Ad, Category
-from django.contrib.auth.models import User
+
+def ads_list_fragment(request):
+    """
+    Zwraca fragment HTML listy ogłoszeń.
+    HTMX wywoła to przy ładowaniu strony.
+    """
+    ads = Ad.objects.all().order_by('-created_at')
+    return render(request, "ads/partials/ad_item_list.html", {"ads": ads})
+
 
 def ad_form(request):
-    # Formularz HTMX
+    """
+    Renderuje formularz dodawania ogłoszenia.
+    Nie tworzy obiektów bezpośrednio – obsługuje tylko HTML.
+    """
     categories = Category.objects.all()
     return render(request, "ads/partials/ad_form.html", {"categories": categories})
 
-def ad_create(request):
-    if request.method == "POST":
-        title = request.POST.get("title")
-        description = request.POST.get("description")
-        price = request.POST.get("price")
-        category_id = request.POST.get("category")
-        image = request.FILES.get("image")  # <--- tutaj plik
 
-        ad = Ad.objects.create(
-            title=title,
-            description=description,
-            price=price,
-            owner=request.user if request.user.is_authenticated else User.objects.first(),
-            category=Category.objects.get(id=category_id) if category_id else None,
-            image=image  # <--- przypisanie obrazu
-        )
-
-        # Zwracamy fragment <li> dla HTMX
-        return render(request, "ads/partials/ad_item.html", {"ad": ad})
+def ad_item_fragment(request, ad_id):
+    """
+    Zwraca fragment HTML dla pojedynczego ogłoszenia.
+    Można go użyć przy dodawaniu nowego ogłoszenia przez HTMX.
+    """
+    ad = Ad.objects.get(id=ad_id)
+    return render(request, "ads/partials/ad_item.html", {"ad": ad})

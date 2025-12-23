@@ -1,6 +1,5 @@
 {% load static %}
 <li class="item-card">
-
     <div class="item-image">
         <a href="{% url 'ad_detail' ad.id %}" class="item-link">
         {% if ad.image %}
@@ -10,7 +9,6 @@
         {% endif %}
         </a>
     </div>
-
     <div class="item-content">
         <a href="{% url 'ad_detail' ad.id %}" class="item-link">
         <div class="item-header">
@@ -20,5 +18,4 @@
         <p class="item-description">{{ ad.description }}</p>
         </a>
     </div>
-
 </li>

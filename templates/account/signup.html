@@ -5,6 +5,17 @@
 {% block content %}
 
 <div class="container login-box">
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
     <h2>Rejestracja</h2>
 
     <p>Utwórz konto przez Google:</p>
@@ -21,14 +32,37 @@
 
     <form method="POST" action="{% url 'account_signup' %}">
         {% csrf_token %}
+        
+        
+        
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Nazwa użytkownika:</label>
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Adres email:</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">Hasło:</label>
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}">Powtórz hasło:</label>
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+        </div>
 
-        <input type="text" name="username" placeholder="Nazwa użytkownika" required>
-
-        <input type="email" name="email" placeholder="adres email" required>
-
-        <input type="password" name="password1" placeholder="hasło" required>
-
-        <input type="password" name="password2" placeholder="powtórz hasło" required>
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
 
         <button type="submit">Utwórz konto</button>
     </form>

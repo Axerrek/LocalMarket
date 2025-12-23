@@ -1,37 +1,37 @@
 {% extends "base.html" %}
 {% load static %}
 {% load socialaccount %}
-
 {% block content %}
 
-
 <div class="container login-box">
+
     <h2>Logowanie</h2>
-
-
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
     <p>Zaloguj się przez konto google</p>
-
    <form method="post" action="{% provider_login_url 'google' process='login' %}">
+
     {% csrf_token %}
     <button type="submit" class="google-btn">
         <img src="{% static 'img/google_icon.png' %}" alt="Google" class="google-icon">
         Kontynuuj z Google
     </button>
     </form>
-
-    <!-- Tradycyjny formularz logowania -->
     <form method="POST" action="{% url 'account_login' %}">
     {% csrf_token %}
-
     <label for="id_login">Nazwa użytkownika lub email:</label>
     {{ form.login }}
-
     <label for="id_password">Hasło:</label>
     {{ form.password }}
-
     <button type="submit">Zaloguj</button>
   </form>
-
   <p>Nie masz konta? <a href="{% url 'account_signup' %}">Zarejestruj się</a></p>
 </div>
 {% endblock %}

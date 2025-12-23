@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
 from pathlib import Path
-
+from django.contrib.messages import constants as messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,9 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,7 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-
     # Allauth
     'django.contrib.sites',
     'allauth',
@@ -54,9 +50,14 @@ SITE_ID = 1
 
 LOGIN_REDIRECT_URL = '/ads'
 LOGOUT_REDIRECT_URL = '/'
+
+ACCOUNT_ADAPTER = 'allauth.account.adapter.DefaultAccountAdapter'
+
 ACCOUNT_EMAIL_VERIFICATION = "none"
-ACCOUNT_AUTHENTICATION_METHOD = "username"
-ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_FORMS = {
+    'login': 'allauth.account.forms.LoginForm',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,12 +124,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl'
+TIME_ZONE = 'Europe/Warsaw'
 
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
+USE_I18N = True # Włącz obsługę internacjonalizacji
+USE_L10N = True # Włącz formatowanie lokalne
 USE_TZ = True
 
 

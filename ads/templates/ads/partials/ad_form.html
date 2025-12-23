@@ -2,7 +2,7 @@
 {% block content %}
 <form 
     hx-post="{% url 'ad_create' %}" 
-    hx-target="#ads-list"
+    hx-target="#items-list"
     hx-swap="beforeend"
     enctype="multipart/form-data"
 >
@@ -29,7 +29,6 @@
 
     <button type="submit">Dodaj ogłoszenie</button>
 </form>
-
 {% endblock %}
 
 
