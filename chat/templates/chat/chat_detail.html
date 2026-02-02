@@ -22,6 +22,16 @@
             {% for msg in messages %}
                 <div class="message {% if msg.sender == request.user %}me{% else %}them{% endif %}">
                     <p>{{ msg.text }}</p>
+
+                    {% if msg.sender == request.user %}
+                        <span class="message-status">
+                            {% if msg.is_read %}
+                                ✔✔ Przeczytano
+                            {% else %}
+                                ✔ Wysłano
+                            {% endif %}
+                        </span>
+                    {% endif %}
                 </div>
             {% empty %}
                 <p>Brak wiadomości w tej rozmowie.</p>

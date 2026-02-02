@@ -1,0 +1,229 @@
+/* =========================
+   CHAT THEME (kolory)
+   ========================= */
+
+:root {
+    /* Tła */
+    --chat-bg: #1e1f20;
+    --chat-panel: #252628;
+    --chat-border: #333;
+
+    /* Tekst */
+    --chat-text: #eeeeee;
+    --chat-text-muted: #aaaaaa;
+
+    /* Wiadomości */
+    --chat-msg-me: #2e4d36;
+    --chat-msg-them: #5a5a5a;
+
+    /* Akcenty */
+    --chat-accent: #3a7d44;
+    --chat-accent-hover: #2e6336;
+}
+
+
+/* =========================
+   CHAT LAYOUT
+   ========================= */
+
+.chat-container {
+    display: flex;
+    height: calc(100vh - 4rem);
+    background: var(--chat-bg);
+}
+
+
+/* =========================
+   CHAT LIST (LEFT SIDEBAR)
+   ========================= */
+
+.chat-list {
+    width: 280px;
+    background: var(--chat-panel);
+    border-right: 1px solid var(--chat-border);
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.chat-list h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--chat-text);
+}
+
+
+/* pojedynczy wątek */
+.chat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--chat-text);
+    margin-bottom: 0.3rem;
+    transition: background-color 0.15s ease;
+}
+
+.chat-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chat-item.active {
+    background-color: var(--chat-msg-me);
+}
+
+
+/* avatar */
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ccc;
+    flex-shrink: 0;
+}
+
+.chat-name {
+    font-weight: 500;
+}
+
+
+/* =========================
+   CHAT EMPTY STATE
+   ========================= */
+
+.chat-empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+}
+
+
+/* =========================
+   CHAT WINDOW (RIGHT SIDE)
+   ========================= */
+
+.chat-window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--chat-bg);
+}
+
+
+/* header rozmowy */
+.chat-header {
+    padding: 1rem;
+    background: var(--chat-panel);
+    border-bottom: 1px solid var(--chat-border);
+}
+
+.chat-header h3 {
+    margin: 0;
+    color: var(--chat-text);
+}
+
+
+/* =========================
+   MESSAGES
+   ========================= */
+
+.messages {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+/* wspólne style wiadomości */
+.message {
+    max-width: 70%;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    position: relative;
+    color: var(--chat-text);
+}
+
+
+/* wiadomość wysłana */
+.message.me {
+    align-self: flex-end;
+    background: #dcf8c6;
+    background: var(--chat-msg-me);
+}
+
+
+/* wiadomość odebrana */
+.message.them {
+    align-self: flex-start;
+    background: #f1f1f1;
+    background: var(--chat-msg-them);
+}
+
+
+/* status (✔ / ✔✔) */
+.message-status {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 0.2rem;
+    color: var(--chat-text-muted);
+    text-align: right;
+}
+
+
+/* =========================
+   MESSAGE FORM
+   ========================= */
+
+.message-form {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    background: var(--chat-panel);
+    border-top: 1px solid var(--chat-border);
+}
+
+.message-form input {
+    flex: 1;
+    padding: 0.6rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+}
+
+.message-form button {
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    border: none;
+    background: var(--chat-accent);
+    color: white;
+    cursor: pointer;
+}
+
+.message-form button:hover {
+    background: var(--chat-accent-hover);
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 800px) {
+    .chat-container {
+        flex-direction: column;
+    }
+
+    .chat-list {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+}

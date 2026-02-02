@@ -1,0 +1,109 @@
+.item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.item-link:hover .item-card {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transform: scale(1.01);
+    transition: 0.15s;
+}
+
+.ad-container {
+    width: 1200px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.ad-container .image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.details {
+    flex: 1;
+    text-align: left;
+}
+
+.details h1 {
+    margin-top: 0;
+}
+
+.contact-btn {
+    display: inline-block;
+    background: #26702e;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.contact-btn:hover {
+    background-color: #1e5825;
+}
+#items-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;           /* aby karty układały się w rzędy */
+    justify-content: center;   /* wyśrodkowanie całej listy */
+    gap: 0.6rem;                 /* odstępy między kartami */
+}
+
+.item-card {
+    display: flex;
+    width: 70%;              /* ograniczamy szerokość */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.item-image img.item-img {
+    display: block;       /* zawsze pokazuj obrazek */
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+}
+
+.item-content {
+    padding: 0.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-title {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.item-price {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.item-description {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}

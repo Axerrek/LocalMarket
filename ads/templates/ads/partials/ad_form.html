@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <form 
-    hx-post="{% url 'ad_create' %}" 
-    hx-target="#items-list"
-    hx-swap="beforeend"
+    method="post"
     enctype="multipart/form-data"
 >
     {% csrf_token %}

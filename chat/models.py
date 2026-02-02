@@ -15,5 +15,8 @@ class Message(models.Model):
     text = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
+    is_read = models.BooleanField(default=False)
+    read_at = models.DateTimeField(null=True, blank=True)
+    
     def __str__(self):
         return f"{self.sender}: {self.text[:20]}"

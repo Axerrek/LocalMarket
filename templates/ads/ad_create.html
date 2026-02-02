@@ -1,32 +1,53 @@
 {% extends "base.html" %}
 {% block title %}Nowe ogłoszenie{% endblock %}
+{% load static %}
+
+{% block scripts %}
+<script src="{% static 'js/dropzone.js' %}"></script>
+{% endblock %}
 
 {% block content %}
-<h2>Dodaj nowe ogłoszenie</h2>
 
-<form method="POST" enctype="multipart/form-data">
+<div class="new-post">
+    <h2>Dodaj nowe ogłoszenie</h2>
+
+    <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <label>Tytuł:</label>
-    <input type="text" name="title" required><br><br>
+    <div class="form-group">
+        <label>Tytuł</label>
+        {{ form.title }}
+    </div>
 
-    <label>Opis:</label>
-    <textarea name="description" required></textarea><br><br>
+    <div class="form-row">
+        <div class="form-group">
+            <label>Kategoria</label>
+            {{ form.category }}
+        </div>
 
-    <label>Cena:</label>
-    <input type="number" name="price" required><br><br>
+        <div class="form-group">
+        <label>Lokalizacja</label>
+        {{ form.region }}
+        </div>
 
-    <label>Kategoria:</label>
-    <select name="category">
-        <option value="">Brak</option>
-        {% for cat in categories %}
-            <option value="{{ cat.id }}">{{ cat.name }}</option>
-        {% endfor %}
-    </select><br><br>
+        <div class="form-group">
+            <label>Cena</label>
+            {{ form.price }}
+        </div>
+    </div>
 
-    <label>Zdjęcie:</label>
-    <input type="file" name="image"><br><br>
+    <div class="form-group">
+        <label>Opis</label>
+        {{ form.description }}
+    </div>
 
-    <button class="btn" type="submit">Dodaj ogłoszenie</button>
+    <div class="form-group">
+        <label>Zdjęcie</label>
+        {{ form.image }}
+    </div>
+
+    <button class="btn">Dodaj ogłoszenie</button>
 </form>
+</div>
+
 {% endblock %}

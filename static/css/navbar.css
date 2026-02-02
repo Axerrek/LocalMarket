@@ -1,0 +1,74 @@
+.navbar {
+    background-color: #26702e;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+}
+
+.navbar__logo {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* linki */
+.navbar__nav a,
+.navbar__link-button {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5em 0.8em;
+}
+
+.navbar__nav a:hover,
+.navbar__link-button:hover {
+    color: #e0e0e0;
+    background-color: #26702e;
+}
+
+.navbar__user {
+    color: white;
+    opacity: 0.85;
+}
+
+/* Navbar CTA */
+.navbar__nav a.navbar__cta {
+    background-color: #ffffff;
+    color: #26702e;
+    border-radius: 4px;
+    padding: 0.5em 1em;
+    font-weight: bold;
+}
+
+.navbar__nav a.navbar__cta:hover {
+    background-color: #e0e0e0;
+    color: #1b3b1a;
+}
+
+.navbar__cta:hover {
+    background-color: #e0e0e0; /* delikatny hover */
+    color: #1b3b1a;
+}
+/* wewnętrzny wrapper */
+.navbar__inner {
+    max-width: 1200px;      /* ← kontrola szerokości */
+    margin: 0 auto;         /* ← centrowanie */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 20rem;
+}

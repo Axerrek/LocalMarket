@@ -3,12 +3,24 @@ from django.contrib.auth.decorators import login_required
 from .models import ChatThread, Message
 from django.contrib.auth.models import User
 from ads.models import Ad
+from django.utils import timezone
 
 @login_required
 def chat_detail(request, thread_id):
     thread = get_object_or_404(ChatThread, id=thread_id, users=request.user)
     other_user = thread.users.exclude(id=request.user.id).first()
     
+    # Oznacz wiadomości jako przeczytane
+    Message.objects.filter(
+        thread=thread,
+        is_read=False
+    ).exclude(
+        sender=request.user
+    ).update(
+        is_read=True,
+        read_at=timezone.now()
+    )
+
     if request.method == "POST":
         text = request.POST.get("message")
         if text:
