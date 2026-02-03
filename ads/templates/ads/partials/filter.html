@@ -1,0 +1,48 @@
+ {% load static %}
+
+<form
+    hx-get="{% url 'ads_filtered' %}"
+    hx-target="#ads-list"
+    hx-trigger="change, keyup delay:300ms"
+>
+    <div class="filter-group search-group">
+        <input type="text" placeholder="Szukaj..." class="filter-input search-input">
+        <img src="{% static 'img/search_icon.png' %}" alt="Szukaj" class="search-icon">
+    </div>
+    <select name="region">
+    <option value="">Wszystkie województwa</option>
+    {% for code, name in regions %}
+        <option value="{{ code }}">{{ name }}</option>
+    {% endfor %}
+    </select>
+    <select name="category">
+        <option value="">Wszystkie kategorie</option>
+        {% for cat in categories %}
+            <option value="{{ cat.id }}">{{ cat.name }}</option>
+        {% endfor %}
+    </select>
+
+   <h4 class="filter-title">Cena</h4>
+
+    <div class="price-fields">
+        <div class="floating-field">
+            <input
+                type="number"
+                name="price_min"
+                id="price_min"
+                placeholder=" "
+            >
+            <label for="price_min">od</label>
+        </div>
+        <span class="divider">-</span>
+        <div class="floating-field">
+            <input
+                type="number"
+                name="price_max"
+                id="price_max"
+                placeholder=" "
+            >
+            <label for="price_max">do</label>
+        </div>
+    </div>
+</form>

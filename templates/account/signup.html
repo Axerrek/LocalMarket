@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="container login-box">
+<div class="login-box">
 
     {% if messages %}
     <div class="messages">
@@ -32,8 +32,7 @@
 
     <form method="POST" action="{% url 'account_signup' %}">
         {% csrf_token %}
-        
-        
+
         
         <div class="form-group">
             <label for="{{ form.username.id_for_label }}">Nazwa użytkownika:</label>

@@ -58,14 +58,13 @@
     list-style: none;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;           /* aby karty układały się w rzędy */
-    justify-content: center;   /* wyśrodkowanie całej listy */
-    gap: 0.6rem;                 /* odstępy między kartami */
+    flex-direction: column;
+    gap: 0.8rem;
 }
 
 .item-card {
     display: flex;
-    width: 70%;              /* ograniczamy szerokość */
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 8px;
     background: white;
@@ -106,4 +105,148 @@
 .item-description {
     margin-top: 0.5rem;
     font-size: 0.8rem;
+}
+.ads-page {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 1.5rem auto;
+    padding: 0 1rem; /* zapobiega przyklejeniu do krawędzi */
+    align-items: flex-start;
+}
+
+.filter-sidebar {
+    width: 220px;
+    background: #f7f7f7;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+
+.ads-list {
+    flex: 1; /* reszta miejsca dla ogłoszeń */
+}
+.filter-section {
+    margin-bottom: 1.5rem;
+}
+
+.filter-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.price-fields {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.floating-field {
+    position: relative;
+    flex: 1;
+}
+
+.floating-field input {
+    width: 70%;
+    padding: 0.6rem 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: white;
+}
+
+.floating-field label {
+    position: absolute;
+    top: 50%;
+    left: 0.6rem;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    color: #777;
+    pointer-events: none;
+    transition: 0.2s ease;
+    background: white;
+    padding: 0 0.25rem;
+}
+
+/* focus albo wpisana wartość */
+.floating-field input:focus + label,
+.floating-field input:not(:placeholder-shown) + label {
+    top: -0.2rem;
+    font-size: 0.7rem;
+    color: #26702e;
+}
+
+
+.price-fields .divider {
+    flex-shrink: 0;       /* myślnik nie kurczy się */
+    font-size: 1rem;
+    align-items: center; /* wyśrodkowanie elementów w pionie */
+    user-select: none;
+    margin: auto;
+}
+
+
+
+.filter-sidebar .filter-group {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.filter-sidebar .filter-input {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.filter-sidebar .search-group {
+    position: relative;
+}
+
+.filter-sidebar .search-icon {
+    position: absolute;
+    right: 0.5rem;      /* odległość od prawej krawędzi inputa */
+    top: 50%;            /* pionowe wyśrodkowanie */
+    transform: translateY(-50%);
+    width: 1.2rem;       /* szerokość ikony */
+    height: 1.2rem;      /* wysokość ikony */
+    pointer-events: none; /* kliknięcie przechodzi do inputa */
+}
+/* Style dla selectów w filtrze */
+.filter-sidebar select {
+    width: 100%;               /* zajmuje całą szerokość sidebaru */
+    padding: 0.5rem 0.8rem;    /* wewnętrzny odstęp */
+    margin-bottom: 1rem;       /* odstęp między polami */
+    border-radius: 4px;        /* lekko zaokrąglone rogi */
+    border: 1px solid #999;    /* szara ramka */
+    background-color: #fff;    /* białe tło */
+    font-size: 1rem;
+    box-sizing: border-box;    /* aby padding nie zwiększał szerokości */
+    appearance: none;          /* usuwa domyślny styl strzałki w przeglądarce */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    background-image: url("{% static 'img/arrow-down.svg' %}"); /* własna strzałka */
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1rem 1rem;
+}
+
+/* Hover i focus */
+.filter-sidebar select:focus {
+    outline: none;
+    border-color: #007bff; /* niebieski border przy focus */
+    box-shadow: 0 0 3px rgba(0,123,255,0.5);
+}
+
+/* Opcjonalnie: dodanie minimalnego marginesu między dwoma selectami obok siebie */
+.filter-sidebar .select-group {
+    display: flex;
+    gap: 0.5rem;
 }

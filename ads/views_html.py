@@ -48,7 +48,12 @@ def ad_create_page(request):
     return render(request, "ads/ad_create.html", {"form": form})
 def ads_list(request):
     # HTML i HTMX wywoułują REST API
-    return render(request, 'ads/ads_list.html')
+    categories = Category.objects.all()
+    regions = Ad.REGIONS
+    return render(request, "ads/ads_list.html", {
+        "categories": categories,
+        "regions": regions
+    })
 
 def login_page(request):
     return render(request, "auth/login.html")

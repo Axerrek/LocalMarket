@@ -1,12 +1,22 @@
 {% extends "base.html" %}
-{% block content %}
-<div id="modal"></div>
 
-<div id="ads-list"
-     hx-get="{% url 'ads_list_fragment' %}"
-     hx-trigger="load"
-     hx-target="#ads-list"
-     hx-swap="innerHTML">
-    <!-- Lista ogłoszeń zostanie wstawiona przez HTMX -->
+{% block content %}
+
+<div class="ads-page">
+
+    <!-- Sidebar filtrów -->
+    <aside class="filter-sidebar">
+        {% include "ads/partials/filter.html" %}
+    </aside>
+
+    <!-- Lista ogłoszeń -->
+    <main class="ads-list" id="ads-list"
+        hx-get="{% url 'ads_list_fragment' %}"
+        hx-trigger="load"
+        hx-target="#ads-list"
+        hx-swap="innerHTML">
+        <!-- Lista ogłoszeń zostanie wstawiona przez HTMX -->
+    </main>
+
 </div>
 {% endblock %}
